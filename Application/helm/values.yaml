@@ -27,3 +27,7 @@ volume:
   mount:
     path: /tmp/html
 test: Healthy    
+github:
+  user: Menachem-Cohen
+  token: empty-pass
+  url: https://api.github.com/repos/Menachem-Cohen/Menachem/issues
