@@ -11,7 +11,7 @@ service:
 probes:
   readiness:
     path: /health/readiness # this check the application url path
-    initialDelaySeconds: 1 
+    initialDelaySeconds: 1 # the time is waiting befor testing the application path
     timeoutSeconds: 1 # the time for timeout
     periodSeconds: 10 # the abount of time to wait between checks
     successThreshold: 1 # count to decalre seccessfull 
