@@ -26,4 +26,4 @@ probes:
 volume:
   mount:
     path: /tmp/html
-test: Healnuthy    
+test: Healthy    
