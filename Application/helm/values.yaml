@@ -26,8 +26,8 @@ probes:
 volume:
   mount:
     path: /tmp/html
-test: Healthy    
+test: Healthy2    
 github:
   user: Menachem-Cohen
   token: empty-pass
-  url: https://api.github.cuom/repos/Menachem-Cohen/Menachem/issues
+  url: https://api.github.com/repos/Menachem-Cohen/Menachem/issues
