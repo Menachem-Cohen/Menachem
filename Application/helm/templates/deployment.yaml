@@ -23,6 +23,19 @@ spec:
             - containerPort: {{ .Values.containers.containerPort }}
               protocol: TCP
           imagePullPolicy: IfNotPresent
+#this will Create Volume From our ConfigMap      
+    spec:
+      volumes:
+        - name: index-html
+          configMap:
+            name: index.html
+            defaultMode: 420
+# This will mount our File to the Pod File system
+      containers:
+      
+          volumeMounts:
+          - name: index-html
+            mountPath: /tmp/html # this will mount the html.index file to it application location
 # update with the image you build in part 1
           image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
       restartPolicy: Always
