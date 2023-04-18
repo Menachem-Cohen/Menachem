@@ -2,21 +2,22 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
 # set your lab user name
-  name: {{ .Release.Name }}
+  name: {{ .Release.Name }}-2
 spec:
   replicas: {{ .Values.ReplicaNumber }}
   selector:
     matchLabels:
 # set your lab user name
-      app: {{ .Release.Name }}
+      app: {{ .Release.Name }}-2
   template:
     metadata:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/ConfigMap.yaml") . | sha256sum }}
         rollme: {{ randAlphaNum 5 | quote }}
+        argocd.argoproj.io/sync-wave: "10"
       labels:
 # set your lab user name
-        app: {{ .Release.Name }}
+        app: {{ .Release.Name }}-2
     spec:
       volumes:
         - name: index-html
@@ -52,7 +53,7 @@ spec:
             - name: index-html
               mountPath: /tmp/html # this will mount the html.index file to it application location
           terminationMessagePath: /dev/termination-log
-          name: {{ .Release.Name }}
+          name: {{ .Release.Name }}-2
           ports:
             - containerPort: {{ .Values.containers.containerPort }}
               protocol: TCP
